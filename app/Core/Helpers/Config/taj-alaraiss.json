@@ -1,0 +1,32 @@
+{
+	"DATA_BASE"	:	{
+					"DEV"	:	{
+							"HOST"		:	"extensionmedia",
+							"DBNAME"	:	"yafa_taj_alaraiss",
+							"USERNAME"	:	"root",
+							"PASSWORD"	:	""
+					},
+					"PROD"	:	{
+							"HOST"		:	"localhost",
+							"DBNAME"	:	"yafa_taj_alaraiss",
+							"USERNAME"	:	"yafa_app",
+							"PASSWORD"	:	"1A2Z3E4R5t6y"
+					}
+	},
+	"MAIL"		:	{
+					"HOST"			:	"mail.locator.ma",
+					"PORT"			:	"465",
+					"SMTP_SECURE"	:	"ssl",
+					"IS_SMTP_AUTH"	:	true,
+					"USER_NAME"		:	"support@locator.ma",
+					"PASSWORD"		:	"1A2Z3E4R5T6Y",
+					"FROM_NAME"		:	"LOCATOR : Location de Voitures"
+	},
+	"GENERAL"	:	{
+							"CURRENCY"		:	"Dh",
+							"DOMAIN"		:	"yafa.ma",
+							"HOST_DEV"		:	"extensionmedia/TAJALARAISS/",
+							"HOST_PROD"		:	"www.taj.yafa.ma/",
+							"ENVIRENMENT"	:	"TAJ-MANAGER"
+	}
+}

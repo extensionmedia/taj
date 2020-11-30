@@ -1,0 +1,76 @@
+{
+	"Log":{
+		"0"			:	{
+							"title"		:	"LogOut",
+							"message"	:	"vient de se Déconnecté"					
+						},
+		"1"			:	{
+							"title"		:	"LogIn",
+							"message"	:	"vient de se Connecté"					
+						}		
+	},
+	"Produit":{
+		"-1"		:	{
+							"title"		:	"Supprimer",
+							"message"	:	"a supprimer un produit"					
+						},
+		"0"			:	{
+							"title"		:	"Modifier",
+							"message"	:	"a modifié un produit"					
+						},
+		"1"			:	{	
+							"title"		:	"Ajouter",
+							"message"	:	"a ajouté un nouvel produit"
+						}	
+	},
+	"Location":{
+		"-1"		:	{
+							"title"		:	"Supprimer",
+							"message"	:	"a supprimer une location"					
+						},
+		"0"			:	{
+							"title"		:	"Modifier",
+							"message"	:	"a modifié une location"					
+						},
+		"1"			:	{	
+							"title"		:	"Ajouter",
+							"message"	:	"a ajouté une nouvelle location"
+						}	
+	},
+	"Caisse":{
+		"-1"		:	{
+							"title"		:	"Supprimer",
+							"message"	:	"a supprimer un montant de la caisse"					
+						},
+		"0"			:	{
+							"title"		:	"Modifier",
+							"message"	:	"a modifié un montant de la caisse"					
+						},
+		"1"			:	{	
+							"title"		:	"Ajouter",
+							"message"	:	"a ajouté un montant à la caisse"
+						}	
+	},
+	"Image":{
+		"-1"		:	{
+							"title"		:	"Supprimer",
+							"message"	:	"a supprimer une image"					
+						},
+		"0"			:	{
+							"title"		:	"Modifier",
+							"message"	:	"a modifié une image"					
+						},
+		"1"			:	{	
+							"title"		:	"Ajouter",
+							"message"	:	"a ajouté une nouvelle image"
+						}	
+	},
+	"Pr-2":{
+		"action"		: 	"Propriete",
+		"message"		: 	"a modifié un appartement"		
+	},
+	"Pr-0":{
+		"action"		: 	"Propriete",
+		"message"		: 	"a supprimé un appartement"
+	}
+}

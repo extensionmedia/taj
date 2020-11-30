@@ -1,0 +1,12 @@
+{
+	"topbar":{
+		"name": "تاج العرائيس",
+		"description": "Manager",
+		"separator": "<i class='fa fa-angle-right'></i>"
+		
+	},
+	"index":{
+		"name": "TAJ ALARAISS",
+		"title":"Manager"
+	}
+}
