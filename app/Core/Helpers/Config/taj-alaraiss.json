@@ -1,15 +1,15 @@
 {
 	"DATA_BASE"	:	{
 					"DEV"	:	{
-							"HOST"		:	"localhost",
-							"DBNAME"	:	"taj_db",
+							"HOST"		:	"extensionmedia",
+							"DBNAME"	:	"yafa_taj_users",
 							"USERNAME"	:	"root",
 							"PASSWORD"	:	""
 					},
 					"PROD"	:	{
-							"HOST"		:	"localhost",
-							"DBNAME"	:	"yafa_taj_alaraiss",
-							"USERNAME"	:	"yafa_app",
+							"HOST"		:	"extensionmedia",
+							"DBNAME"	:	"extensio_taj_db",
+							"USERNAME"	:	"extensio_db",
 							"PASSWORD"	:	"1A2Z3E4R5t6y"
 					}
 	},
@@ -24,9 +24,9 @@
 	},
 	"GENERAL"	:	{
 							"CURRENCY"		:	"Dh",
-							"DOMAIN"		:	"yafa.ma",
-							"HOST_DEV"		:	"localhost/taj/",
-							"HOST_PROD"		:	"www.taj.yafa.ma/",
+							"DOMAIN"		:	"extensionmedia.ma",
+							"HOST_DEV"		:	"extensionmedia/CLIENTS/taj/",
+							"HOST_PROD"		:	"www.taj.extensionmedia.ma/",
 							"ENVIRENMENT"	:	"TAJ-MANAGER"
 	}
 }

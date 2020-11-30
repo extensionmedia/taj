@@ -1,13 +1,7 @@
 <?php
 session_start();
-/*
-print_r(scandir(session_save_path()));
-*/
-//echo  md5( "yassine" );
 
-//unset($_SESSION['LOCATOR-MANAGER']);
 unset($_SESSION["ERRORS"]);
-//var_dump($_SESSION);
 
 $D_S = DIRECTORY_SEPARATOR;
 $path_to_config_file = "app".$D_S."Core".$D_S."Helpers".$D_S."Config.php";
@@ -21,11 +15,6 @@ if(file_exists($path_to_config_file)){
 }else{
 	die("ERROR! : Config file not found!" );
 }
-//echo $envirenment;
-
-//var_dump($_SESSION);
-
-
 
 $errors = (isset($_SESSION["ERRORS"]))? $_SESSION["ERRORS"]:array();
 
@@ -139,8 +128,6 @@ if (count($errors)>0){
  *---------------------------------------------------------------
  *
  */
-//var_dump($_SESSION);
-//unset($_SESSION['LOCATOR-APP']);
 
 define('APP_TEMPLATE_PATH','templates'.$D_S.APP_TEMPLATE.$D_S);
 
