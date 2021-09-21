@@ -1,4 +1,4 @@
 @extends('container.app')
 @section('content')
-        Hello
+        Hello world
 @endsection
