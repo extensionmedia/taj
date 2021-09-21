@@ -1,4 +1,4 @@
-<div class="flex items-center justify-between py-2 px-2 bg-gray-50 bg-opacity-10">
+<div class="flex items-center justify-between py-2 px-2 bg-gray-50 bg-opacity-10 shadow">
     <div class="flex gap-2 items-center">
         <div class="text-white text-xl">
             <i class="fas fa-crown"></i>

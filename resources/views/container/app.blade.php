@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    @yield('includes')
 
     <title>{{config('app.name')}}</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="{{asset('js/app.js')}}"></script>
 </head>
 <body>
-    <div class="w-screen h-screen bg-no-repeat" style="background-image: url({{asset('img/background_04.jpg')}})">
+    <div class="w-screen h-screen bg-no-repeat overflow-auto" style="background-image: url({{asset('img/background_04.jpg')}})">
         <div class="w-full md:w-10/12 mx-auto">
             @include('container.common.top')
             @yield('content')
