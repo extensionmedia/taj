@@ -17,9 +17,11 @@
 </head>
 <body>
     <div class="w-screen h-screen bg-no-repeat overflow-auto" style="background-image: url({{asset('img/background_04.jpg')}})">
-        <div class="w-full md:w-10/12 mx-auto">
+        <div class="w-full md:w-10/12 md:mx-auto">
             @include('container.common.top')
-            @yield('content')
+            <div class="px-4 md:px-0">
+                @yield('content')
+            </div>
         </div>
     </div>
 </body>
