@@ -104,7 +104,7 @@ class ProduitCategoryTableSeeder extends Seeder
             array (
                 'id' => 53,
                 'UID' => 'c03a2ca8a0953bf30665f705c1b2f802',
-                'produit_category' => '  papillon',
+                'produit_category' => 'papillon',
                 'parent_id' => -1,
                 'is_default' => 0,
                 'status' => 1,
@@ -113,7 +113,7 @@ class ProduitCategoryTableSeeder extends Seeder
             array (
                 'id' => 54,
                 'UID' => 'd2334045d8aa55a8f537a4719dc03ddf',
-                'produit_category' => ' kravat',
+                'produit_category' => 'kravat',
                 'parent_id' => -1,
                 'is_default' => 0,
                 'status' => 1,
@@ -122,7 +122,7 @@ class ProduitCategoryTableSeeder extends Seeder
             array (
                 'id' => 55,
                 'UID' => 'f142a873c2fe80b33164eb4469ff98fb',
-                'produit_category' => ' kamissa',
+                'produit_category' => 'kamissa',
                 'parent_id' => -1,
                 'is_default' => 0,
                 'status' => 1,
@@ -131,7 +131,7 @@ class ProduitCategoryTableSeeder extends Seeder
             array (
                 'id' => 56,
                 'UID' => '0b7021dca5db290a1a9d1dcb3054ff44',
-                'produit_category' => ' 5iminos',
+                'produit_category' => '5iminos',
                 'parent_id' => -1,
                 'is_default' => 0,
                 'status' => 1,
@@ -140,7 +140,7 @@ class ProduitCategoryTableSeeder extends Seeder
             array (
                 'id' => 57,
                 'UID' => '318cd12397666a8a62a44304fbc93d2e',
-                'produit_category' => ' kolee',
+                'produit_category' => 'kolee',
                 'parent_id' => -1,
                 'is_default' => 0,
                 'status' => 1,

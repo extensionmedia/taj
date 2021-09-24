@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Magasin;
 use App\Models\Produit;
+use App\Models\ProduitCategory;
+use App\Models\ProduitMarque;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -14,7 +17,40 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+        return view('produit.index')->with([
+            'produits'              =>      Produit::all(),
+            'produit_categories'    =>      ProduitCategory::orderBy('produit_category')->get(),
+            'magasins'              =>      Magasin::all(),
+            'produit_marques'               =>      ProduitMarque::orderBy('produit_marque')->get()
+
+        ]);
+    }
+
+    public function search(Request $r){
+
+        $query = Produit::query();
+        if($r->has('text')){
+            $query->orWhere(function($q) use ($r){
+                $q->where('code', 'like', "%{$r->text}%");
+                $q->orWhere('barcode', '=', $r->text);
+            });
+            $query->orWhere(function($q) use ($r){
+                $q->where('code', 'like', "%{$r->text}%");
+                $q->orWhere('barcode_2', '=', $r->text);
+            });
+            $query->orWhere(function($q) use ($r){
+                $q->where('barcode', '=', $r->text);
+                $q->orWhere('barcode_2', '=', $r->text);
+            });
+        }
+        $trs = '';
+        foreach($query->get() as $p){
+            $trs .= view('produit.table.row')->with([
+                'p'     =>  $p
+            ]);
+        }
+        echo $trs;
+
     }
 
     /**
@@ -57,7 +93,7 @@ class ProduitController extends Controller
      */
     public function edit(Produit $produit)
     {
-        //
+        dd($produit);
     }
 
     /**
