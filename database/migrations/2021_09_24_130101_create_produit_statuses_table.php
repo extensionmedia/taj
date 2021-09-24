@@ -15,7 +15,9 @@ class CreateProduitStatusesTable extends Migration
     {
         Schema::create('produit_statuses', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('produit_status');
+            $table->boolean('is_default');
+            $table->boolean('status');
         });
     }
 

@@ -15,7 +15,11 @@ class CreateMagasinsTable extends Migration
     {
         Schema::create('magasins', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('UID');
+            $table->string('magasin_name');
+            $table->string('notes')->nullable();
+            $table->boolean('is_default');
+            $table->boolean('status');
         });
     }
 

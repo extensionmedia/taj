@@ -15,6 +15,11 @@ class CreateProduitGammesTable extends Migration
     {
         Schema::create('produit_gammes', function (Blueprint $table) {
             $table->id();
+            $table->integer('produit_id');
+            $table->integer('produit_marque_id');
+            $table->integer('produit_color_id');
+            $table->string('taille');
+            $table->string('barcode');
             $table->timestamps();
         });
     }

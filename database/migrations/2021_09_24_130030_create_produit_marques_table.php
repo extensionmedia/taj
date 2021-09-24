@@ -15,7 +15,9 @@ class CreateProduitMarquesTable extends Migration
     {
         Schema::create('produit_marques', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('produit_marque');
+            $table->boolean('is_default');
+            $table->boolean('status');
         });
     }
 
