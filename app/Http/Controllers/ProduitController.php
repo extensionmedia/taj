@@ -29,7 +29,7 @@ class ProduitController extends Controller
     public function search(Request $r){
 
         $query = Produit::query();
-        if($r->has('text')){
+        if($r->has('text') &&  $r->text != ''){
             $query->orWhere(function($q) use ($r){
                 $q->where('code', 'like', "%{$r->text}%");
                 $q->orWhere('barcode', '=', $r->text);
@@ -43,13 +43,28 @@ class ProduitController extends Controller
                 $q->orWhere('barcode_2', '=', $r->text);
             });
         }
+
+        if($r->has('category')  &&  $r->category != '-1'){
+            $query->where('produit_category_id', '=', $r->category);
+        }
+
+        // if($r->has('magasin')  &&  $r->magasin != '-1'){
+
+        //     $query->filter(function($p) use ($r){
+        //         if($p->)
+        //     });
+        // }
+
+        //dd($query->toSql());
+
         $trs = '';
+        $empty = '<tr><td colspan="6"> <div class="py-4 text-center text-2xl text-green-500">لا يوجد منتوج في نتيجة البحث</div> </td></tr>';
         foreach($query->get() as $p){
             $trs .= view('produit.table.row')->with([
                 'p'     =>  $p
             ]);
         }
-        echo $trs;
+        return $trs==''? $empty: $trs;
 
     }
 

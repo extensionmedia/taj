@@ -14,16 +14,18 @@
             المنتجات
         </div>
     </div>
-
+<div class="relative">
     @include('produit.partials.header')
 
     @include('produit.table.table')
 
-    <script>
-        $(document).ready(function(){
-            alert('ready');
-        });
-    </script>
+    <div class="loading hidden absolute top-0 left-0 right-0 bottom-0 bg-gray-800 bg-opacity-20">
+        <div class="w-32 mx-auto mt-32 text-4xl text-center">
+            <i class="fas fa-spinner fa-spin"></i>
+            <div class="text-xl py-2">جاري التحميل</div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
