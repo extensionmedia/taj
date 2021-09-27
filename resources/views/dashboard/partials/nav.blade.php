@@ -54,7 +54,7 @@
             'icon'          =>  '<i class="fas fa-wrench"></i>',
             'style'         =>  'text-gray-50 font-bold text-center',
             'background'    =>  'bg-gray-500',
-            'route'         =>  'route("article.list")'
+            'route'         =>  route("settings.index")
         ]
     ];
 @endphp

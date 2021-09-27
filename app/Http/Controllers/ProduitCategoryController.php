@@ -7,6 +7,42 @@ use Illuminate\Http\Request;
 
 class ProduitCategoryController extends Controller
 {
+
+    public function search(Request $r){
+
+        $query = ProduitCategory::query();
+        if($r->has('text') &&  $r->text != ''){
+            $query->where('produit_category', 'like', "%{$r->text}%");
+        }
+
+        if($r->has('status')){
+            $query->where('status', '=', $r->status);
+        }
+
+        $result = $query->get();
+
+
+        $data = [
+            'trs'   =>  '<tr><td colspan="6"> <div class="py-4 text-center text-2xl text-green-500">لا يوجد منتوج في نتيجة البحث</div> </td></tr>',
+            'count' =>  0
+        ];
+        $trs = '';
+        foreach($query->get() as $p){
+            $trs .= view('settings.pages.project.table.row')->with([
+                'p'     =>  $p
+            ]);
+        }
+        if($trs != ''){
+            $data['trs'] = $trs;
+            $data['count'] = $query->count();
+        }
+
+
+        return $data;
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
