@@ -16,6 +16,8 @@
     </div>
 <div class="relative">
     @include('produit.partials.header')
+    
+    @include('produit.partials.pagination')
 
     @include('produit.table.table')
 

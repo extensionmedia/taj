@@ -25,27 +25,15 @@ class ProduitStatusTableSeeder extends Seeder
                 'produit_status' => 'Activé',
                 'is_default' => 0,
                 'status' => 1,
+                'style'=>'px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800'
             ),
             1 =>
-            array (
-                'id' => 2,
-                'produit_status' => 'Désactivé',
-                'is_default' => 0,
-                'status' => 1,
-            ),
-            2 =>
             array (
                 'id' => 3,
                 'produit_status' => 'Archivé',
                 'is_default' => 0,
                 'status' => 1,
-            ),
-            3 =>
-            array (
-                'id' => 4,
-                'produit_status' => 'Terminé',
-                'is_default' => 0,
-                'status' => 1,
+                'style'=>'px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800'
             ),
             4 =>
             array (
@@ -53,6 +41,7 @@ class ProduitStatusTableSeeder extends Seeder
                 'produit_status' => 'En préparation',
                 'is_default' => 1,
                 'status' => 1,
+                'style'=>'px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800'
             ),
         ));
 

@@ -23,6 +23,11 @@
                 <option value="{{$m->id}}">{{ Str::upper( $m->magasin_name )}}</option>
             @endforeach
         </select>
+        <select name="status" id="status" class="submit_me border rounded py-2 px-2 text-xs">
+            @foreach ($statuses as $s)
+                <option @if($s->id == 1) selected @endif value="{{$s->id}}">{{ Str::upper( $s->produit_status )}}</option>
+            @endforeach
+        </select>
     </div>
 </form>
 
@@ -40,7 +45,8 @@
                 url: url,
                 data: form.serialize(),
                 success: function(data){
-                    $('table tbody').html(data);
+                    $('table tbody').html(data.trs);
+                    $('.count').html('Total : ' + data.count);
                     $('.loading').addClass('hidden');
                 }
             });

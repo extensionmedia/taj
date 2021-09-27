@@ -6,6 +6,7 @@ use App\Models\Magasin;
 use App\Models\Produit;
 use App\Models\ProduitCategory;
 use App\Models\ProduitMarque;
+use App\Models\ProduitStatus;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -18,10 +19,11 @@ class ProduitController extends Controller
     public function index()
     {
         return view('produit.index')->with([
-            'produits'              =>      Produit::all(),
+            'produits'              =>      Produit::where('produit_status_id', 1)->get(),
             'produit_categories'    =>      ProduitCategory::orderBy('produit_category')->get(),
             'magasins'              =>      Magasin::all(),
-            'produit_marques'               =>      ProduitMarque::orderBy('produit_marque')->get()
+            'produit_marques'       =>      ProduitMarque::orderBy('produit_marque')->get(),
+            'statuses'              =>      ProduitStatus::all()
 
         ]);
     }
@@ -48,23 +50,42 @@ class ProduitController extends Controller
             $query->where('produit_category_id', '=', $r->category);
         }
 
-        // if($r->has('magasin')  &&  $r->magasin != '-1'){
+        if($r->has('marque')  &&  $r->marque != '-1'){
+            $query->where('produit_marque_id', '=', $r->marque);
+        }
+        if($r->has('status')){
+            $query->where('produit_status_id', '=', $r->status);
+        }
 
-        //     $query->filter(function($p) use ($r){
-        //         if($p->)
-        //     });
-        // }
-
+        $produit_result = $query->get();
+        if($r->has('magasin')  &&  $r->magasin != '-1'){
+            $produit_result = $produit_result->filter(function($p) use ($r){
+                foreach($p->magasins as $k=>$m){
+                    if($m->magasin_id == $r->magasin){
+                        return $p;
+                    }
+                }
+            });
+        }
         //dd($query->toSql());
 
+        $data = [
+            'trs'   =>  '<tr><td colspan="6"> <div class="py-4 text-center text-2xl text-green-500">لا يوجد منتوج في نتيجة البحث</div> </td></tr>',
+            'count' =>  0
+        ];
         $trs = '';
-        $empty = '<tr><td colspan="6"> <div class="py-4 text-center text-2xl text-green-500">لا يوجد منتوج في نتيجة البحث</div> </td></tr>';
-        foreach($query->get() as $p){
+        foreach($produit_result as $p){
             $trs .= view('produit.table.row')->with([
                 'p'     =>  $p
             ]);
         }
-        return $trs==''? $empty: $trs;
+        if($trs != ''){
+            $data['trs'] = $trs;
+            $data['count'] = $produit_result->count();         
+        }
+
+        
+        return $data;
 
     }
 

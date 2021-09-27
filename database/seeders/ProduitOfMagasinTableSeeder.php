@@ -46,13 +46,13 @@ class ProduitOfMagasinTableSeeder extends Seeder
             4 =>
             array (
                 'id' => 21,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 9,
             ),
             5 =>
             array (
                 'id' => 23,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 10,
             ),
             6 =>
@@ -64,13 +64,13 @@ class ProduitOfMagasinTableSeeder extends Seeder
             7 =>
             array (
                 'id' => 26,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 12,
             ),
             8 =>
             array (
                 'id' => 28,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 14,
             ),
             9 =>
@@ -88,13 +88,13 @@ class ProduitOfMagasinTableSeeder extends Seeder
             11 =>
             array (
                 'id' => 33,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 18,
             ),
             12 =>
             array (
                 'id' => 34,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 19,
             ),
             13 =>
@@ -106,7 +106,7 @@ class ProduitOfMagasinTableSeeder extends Seeder
             14 =>
             array (
                 'id' => 39,
-                'magasin_id' => 4,
+                'magasin_id' => 1,
                 'produit_id' => 23,
             ),
             15 =>

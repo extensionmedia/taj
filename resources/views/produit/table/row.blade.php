@@ -18,13 +18,16 @@
       </div>
     </td>
     <td class="px-4 py-4 whitespace-nowrap">
-      <div class="text-sm text-gray-900">
-            @if ($p->category)
-                {{  $p->category->produit_category }}
-            @else
-                --
-            @endif
-        </div>
+      <div class="text-sm text-gray-700">
+          {{  $p->libelle }}
+      </div>
+      <div class="text-sm text-blue-700 font-bold">
+          @if ($p->category)
+              {{  $p->category->produit_category }}
+          @else
+              --
+          @endif
+      </div>
       <div class="text-sm text-gray-500">
             @if ($p->sous_category)
                 {{  $p->sous_category->produit_category }}
@@ -32,17 +35,26 @@
       </div>
     </td>
     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
+      @if ($p->magasins->count())
         @foreach ($p->magasins as $magasin)
             @if ($magasin->magasin)
                 {{  $magasin->magasin->magasin_name }}
-            @else
-                --
             @endif
-        @endforeach
+        @endforeach          
+      @else
+        <div class="text-red-500">
+          غير محدد
+        </div>
+      @endif
+
     </td>
     <td class="px-4 py-4 whitespace-nowrap">
-      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-        {{  $p->status->produit_status }}
+      @if ($p->status->style != "")
+        <span class="{{$p->status->style}}">
+      @else
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  
+          @endif
+          {{  $p->status->produit_status }}
       </span>
     </td>
     <td class="px-4 py-4 whitespace-nowrap text-right text-green-600 text-xs font-bold text-gray-500 bg-green-50 bg-opacity-50">

@@ -18,6 +18,7 @@ class CreateProduitStatusesTable extends Migration
             $table->string('produit_status');
             $table->boolean('is_default');
             $table->boolean('status');
+            $table->string('style');
         });
     }
 
