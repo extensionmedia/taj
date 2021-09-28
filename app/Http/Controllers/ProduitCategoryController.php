@@ -28,7 +28,7 @@ class ProduitCategoryController extends Controller
         ];
         $trs = '';
         foreach($query->get() as $p){
-            $trs .= view('settings.pages.project.table.row')->with([
+            $trs .= view('settings.pages.produit_category.table.row')->with([
                 'p'     =>  $p
             ]);
         }
@@ -60,7 +60,7 @@ class ProduitCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('settings.pages.produit_category.partials.create');
     }
 
     /**
@@ -71,7 +71,21 @@ class ProduitCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'produit_category' => 'required|string|max:255',
+        ]);
+
+        ProduitCategory::create([
+            'produit_category'  =>  $request->produit_category,
+            'status'            =>  $request->has('status'),
+            'is_default'        =>  $request->has('is_default'),
+            'parent_id'         =>  -1,
+            'UID'               =>  ''
+        ]);
+        return [
+            'status'    =>  'success',
+            'message'   =>  'Produit Category Created'
+        ];
     }
 
     /**

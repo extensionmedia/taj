@@ -1,4 +1,4 @@
-<form id="idSearch" method="GET" action="{{route('produit_category.search')}}" class="flex items-center justify-between gap-4 py-1 bg-white bg-opacity-0">
+<form id="idSearch" method="GET" action="{{route('produit_category.search')}}" class="flex items-center justify-between gap-4 py-1 my-4 bg-white bg-opacity-0">
     <div class="w-36 flex items-center gap-1">
         <input type="text" placeholder="البحث" name="text" id="text" class="border py-1 px-2 bg-white rounded">
         <div class="flex items-center gap-4">
@@ -7,7 +7,7 @@
                 <option value="0">Désactivé</option>
             </select>
         </div>
-        <button class="bg-green-600 text-white py-1 px-4 rounded text-xl">إبحث</button>
+        <button class="bg-green-600 text-white py-1 px-4 rounded text-sm">إبحث</button>
     </div>
 
     <div class="count text-gray-600">

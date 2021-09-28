@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="flex gap-2 items-center text-gray-50 tracking-tighter py-4 mt-2 mb-6 border-b border-gray-600 text-gray-200">
+    <div class="flex gap-2 items-center text-gray-50 tracking-tighter py-4 mt-2 text-gray-200">
         <a href="{{route('dashboard')}}" class="py-2 w-16 text-center rounded-full bg-green-600 bg-opacity-30 hover:bg-opacity-40 cursor-pointer">
             <i class="fas fa-arrow-left"></i>
         </a>
@@ -29,7 +29,7 @@
                 Liens
             </div>
             <ul class="links">
-                <li data-page="project" class="py-2 px-2 border-b text-sm font-bold bg-gray-200 shadow">
+                <li data-page="project" class="py-2 px-2 pl-4 border-b text-sm font-bold bg-gray-200 shadow-lg">
                     <i class="fas fa-caret-right"></i>
                     Principal
                 </li>
@@ -63,6 +63,12 @@
     <script>
         $(document).ready(function(){
             $('ul.links li').click(function(){
+
+                $('ul.links li').removeClass('font-bold bg-gray-200 shadow-lg pl-4')
+                $('ul.links li').addClass('hover:bg-gray-50 cursor-pointer')
+                $(this).removeClass('hover:bg-gray-50 cursor-pointer')
+                $(this).addClass('font-bold bg-gray-200 shadow-lg pl-4 ')
+
                 var page = $(this).data('page');
                 $('.loading').removeClass('hidden');
                 $.ajax({
