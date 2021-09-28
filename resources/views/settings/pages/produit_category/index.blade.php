@@ -1,8 +1,5 @@
 
-<div class="create_form">
-    
-</div>
-
+<div class="create_form"></div>
 
 <div class="flex justify-between items-center py-4 text-xl font-bold border-b">
     Produit Categories
@@ -28,5 +25,21 @@
                 }
             )
         });
+
+        $(document).on('click', '.edit', function(e){
+            e.preventDefault();
+            $('.loading').removeClass('hidden');
+            var url = $(this).attr('href');
+            $.get(
+                url,
+                function(data){
+                    $('.create_form').html(data);
+                    $('.loading').addClass('hidden');
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                }
+            )
+        });
+
     })
 </script>

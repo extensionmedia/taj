@@ -27,7 +27,7 @@ class SettingsController extends Controller{
 
             if($page == 'produit_category'){
                 return view('settings.pages.'.$page.'.index')->with([
-                    'categories'   =>  ProduitCategory::where('status', 1)->get()
+                    'categories'   =>  ProduitCategory::where('status', 1)->orderBy('produit_category')->get()
                 ]);
             }
         }else{

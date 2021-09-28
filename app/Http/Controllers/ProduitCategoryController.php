@@ -19,15 +19,12 @@ class ProduitCategoryController extends Controller
             $query->where('status', '=', $r->status);
         }
 
-        $result = $query->get();
-
-
         $data = [
             'trs'   =>  '<tr><td colspan="6"> <div class="py-4 text-center text-2xl text-green-500">لا يوجد منتوج في نتيجة البحث</div> </td></tr>',
             'count' =>  0
         ];
         $trs = '';
-        foreach($query->get() as $p){
+        foreach($query->orderBy('produit_category')->get() as $p){
             $trs .= view('settings.pages.produit_category.table.row')->with([
                 'p'     =>  $p
             ]);
@@ -40,6 +37,15 @@ class ProduitCategoryController extends Controller
 
         return $data;
 
+    }
+
+    public function isExists($produit_category){
+        $result = ProduitCategory::where('produit_category', $produit_category)->get();
+        if($result->count()){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
 
@@ -69,8 +75,7 @@ class ProduitCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $request->validate([
             'produit_category' => 'required|string|max:255',
         ]);
@@ -105,9 +110,8 @@ class ProduitCategoryController extends Controller
      * @param  \App\Models\ProduitCategory  $produitCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProduitCategory $produitCategory)
-    {
-        //
+    public function edit(ProduitCategory $produitCategory){
+        return view('settings.pages.produit_category.partials.update')->with(['category'=>$produitCategory]);
     }
 
     /**
@@ -117,9 +121,20 @@ class ProduitCategoryController extends Controller
      * @param  \App\Models\ProduitCategory  $produitCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProduitCategory $produitCategory)
-    {
-        //
+    public function update(Request $request, ProduitCategory $produitCategory){
+
+        $request->validate([
+            'produit_category' => 'required|string|max:255',
+        ]);
+
+        $produitCategory->produit_category = $request->produit_category;
+        $produitCategory->status = $request->has('status');
+        $produitCategory->is_default = $request->has('is_default');
+        $produitCategory->save();
+        return [
+            'status'    =>  'success',
+            'message'   =>  'Produit Category Updated'
+        ];
     }
 
     /**
@@ -128,8 +143,7 @@ class ProduitCategoryController extends Controller
      * @param  \App\Models\ProduitCategory  $produitCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProduitCategory $produitCategory)
-    {
-        //
+    public function destroy(ProduitCategory $produitCategory){
+        return $produitCategory->delete();
     }
 }
