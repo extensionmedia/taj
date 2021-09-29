@@ -6,6 +6,7 @@ use App\Models\ProduitCategory;
 use App\Models\ProduitColor;
 use App\Models\ProduitMarque;
 use App\Models\ProduitStatus;
+use App\Models\ProduitType;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,12 @@ class SettingsController extends Controller{
             if($page == 'produit_status'){
                 return view('settings.pages.'.$page.'.index')->with([
                     'statuses'   =>  ProduitStatus::where('status', 1)->orderBy('produit_status')->get()
+                ]);
+            }
+
+            if($page == 'produit_type'){
+                return view('settings.pages.'.$page.'.index')->with([
+                    'types'   =>  ProduitType::where('status', 1)->orderBy('produit_type')->get()
                 ]);
             }
         }else{

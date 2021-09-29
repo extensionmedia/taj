@@ -5,6 +5,7 @@ use App\Http\Controllers\ProduitColorController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\ProduitMarqueController;
 use App\Http\Controllers\ProduitStatusController;
+use App\Http\Controllers\ProduitTypeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,14 @@ Route::post('produit_status/store', [ProduitStatusController::class, 'store'])->
 Route::put('produit_status/update/{produitStatus}', [ProduitStatusController::class, 'update'])->name('produit_status.update');
 Route::delete('produit_status/delete/{produitStatus}', [ProduitStatusController::class, 'destroy'])->name('produit_status.delete');
 Route::get('produit_status/exists/{produit_status}', [ProduitStatusController ::class, 'isExists'])->name('produit_status.exists');
+
+Route::get('produit_type/search', [ProduitTypeController::class, 'search'])->name('produit_type.search');
+Route::get('produit_type/create', [ProduitTypeController::class, 'create'])->name('produit_type.create');
+Route::get('produit_type/edit/{produitType}', [ProduitTypeController::class, 'edit'])->name('produit_type.edit');
+Route::post('produit_type/store', [ProduitTypeController::class, 'store'])->name('produit_type.store');
+Route::put('produit_type/update/{produitType}', [ProduitTypeController::class, 'update'])->name('produit_type.update');
+Route::delete('produit_type/delete/{produitType}', [ProduitTypeController::class, 'destroy'])->name('produit_type.delete');
+Route::get('produit_type/exists/{produit_type}', [ProduitTypeController ::class, 'isExists'])->name('produit_type.exists');
 
 
 Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
