@@ -37,13 +37,13 @@
                     <i class="fas fa-caret-right"></i>
                     Produit Catégorie
                 </li>
-                <li data-page="produit_color" class="py-2 px-2 hover:bg-gray-50 cursor-pointer border-b text-sm">
-                    <i class="fas fa-caret-right"></i>
-                    Produit Couleur
-                </li>
                 <li data-page="produit_marque" class="py-2 px-2 hover:bg-gray-50 cursor-pointer border-b text-sm">
                     <i class="fas fa-caret-right"></i>
                     Produit Marques
+                </li>
+                <li data-page="produit_color" class="py-2 px-2 hover:bg-gray-50 cursor-pointer border-b text-sm">
+                    <i class="fas fa-caret-right"></i>
+                    Produit Couleur
                 </li>
                 <li data-page="produit_status" class="py-2 px-2 hover:bg-gray-50 cursor-pointer border-b text-sm">
                     <i class="fas fa-caret-right"></i>

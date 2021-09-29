@@ -1,12 +1,12 @@
 
 <div class="flex items-center justify-between">
     <div class="text-xl font-bold py-4">Ajouter une Catégorie</div>
-    <button class="close bg-gray-400 py-2 px-3 text-white rounded border border-gray-500 text-sm hover:bg-gray-500">
+    <button class="close bg-red-400 py-2 px-3 text-white rounded border border-red-500 text-sm hover:bg-red-500">
         <i class="far fa-window-close mr-1"></i>
         Quitter
     </button>
 </div>
-<div class="border py-4 px-4 rounded mb-4 shadow">
+<div class="border-2 py-4 px-4 rounded border-green-400 mb-4 shadow">
     <form class="" id="form" method="POST" action="{{route('produit_category.store')}}" class="w-full">
         @csrf
         <div class="flex gap-4 my-4">

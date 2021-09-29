@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProduitCategory;
+use App\Models\ProduitColor;
+use App\Models\ProduitMarque;
+use App\Models\ProduitStatus;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -28,6 +31,24 @@ class SettingsController extends Controller{
             if($page == 'produit_category'){
                 return view('settings.pages.'.$page.'.index')->with([
                     'categories'   =>  ProduitCategory::where('status', 1)->orderBy('produit_category')->get()
+                ]);
+            }
+
+            if($page == 'produit_marque'){
+                return view('settings.pages.'.$page.'.index')->with([
+                    'marques'   =>  ProduitMarque::where('status', 1)->orderBy('produit_marque')->get()
+                ]);
+            }
+
+            if($page == 'produit_color'){
+                return view('settings.pages.'.$page.'.index')->with([
+                    'colors'   =>  ProduitColor::where('status', 1)->orderBy('produit_color')->get()
+                ]);
+            }
+
+            if($page == 'produit_status'){
+                return view('settings.pages.'.$page.'.index')->with([
+                    'statuses'   =>  ProduitStatus::where('status', 1)->orderBy('produit_status')->get()
                 ]);
             }
         }else{
