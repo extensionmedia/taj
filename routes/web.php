@@ -8,6 +8,7 @@ use App\Http\Controllers\ProduitStatusController;
 use App\Http\Controllers\ProduitTypeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,7 +17,11 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::get('produit', [ProduitController::class, 'index'])->name('produit.list');
+
+Route::get('user', [UserController::class, 'index'])->name('user.index');
+
 Route::get('produit/edit/{produit}', [ProduitController::class, 'edit'])->name('produit.edit');
+
 
 Route::get('produit/search', [ProduitController::class, 'search'])->name('produit.search');
 Route::get('produit_category/search', [ProduitCategoryController::class, 'search'])->name('produit_category.search');

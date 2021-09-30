@@ -47,7 +47,7 @@
             'icon'          =>  '<i class="fas fa-user-friends"></i>',
             'style'         =>  'text-gray-50 font-bold text-center',
             'background'    =>  'bg-blue-500',
-            'route'         =>  'route("article.list")'
+            'route'         =>  route("user.index")
         ],
         [
             'label'         =>  'خصائص',
