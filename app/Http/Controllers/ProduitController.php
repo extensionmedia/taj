@@ -81,10 +81,10 @@ class ProduitController extends Controller
         }
         if($trs != ''){
             $data['trs'] = $trs;
-            $data['count'] = $produit_result->count();         
+            $data['count'] = $produit_result->count();
         }
 
-        
+
         return $data;
 
     }
@@ -96,7 +96,7 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        //
+        return view('produit.create');
     }
 
     /**

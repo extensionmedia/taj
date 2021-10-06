@@ -29,6 +29,13 @@
             'route'         =>  'route("article.list")'
         ],
         [
+            'label'         =>  'المصاريف',
+            'icon'          =>  '<i class="fas fa-money-bill-wave"></i>',
+            'style'         =>  'text-gray-50 font-bold text-center',
+            'background'    =>  'bg-red-900',
+            'route'         =>  'route("article.list")'
+        ],
+        [
             'label'         =>  'المنتجات',
             'icon'          =>  '<i class="fas fa-tshirt"></i>',
             'style'         =>  'text-gray-50 font-bold text-center',
