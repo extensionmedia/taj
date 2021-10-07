@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Magasin;
 use App\Models\Produit;
 use App\Models\ProduitCategory;
+use App\Models\ProduitColor;
 use App\Models\ProduitMarque;
 use App\Models\ProduitStatus;
+use App\Models\ProduitType;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -96,7 +98,15 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        return view('produit.create');
+        return view('produit.create')->with([
+            'categories'            =>      ProduitCategory::orderBy('produit_category')->get(),
+            'magasins'              =>      Magasin::all(),
+            'marques'               =>      ProduitMarque::orderBy('produit_marque')->get(),
+            'statuses'              =>      ProduitStatus::all(),
+            'types'                 =>      ProduitType::all(),
+            'colors'                =>      ProduitColor::all()
+        ]);
+
     }
 
     /**
