@@ -117,7 +117,13 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'date_reception'        => 'required|date',
+            'code'                  => 'required|max:255',
+            'libelle'               => 'required|max:255',
+            'produit_category_id'   => 'required|max:255',
+        ]);
+        dd($request->all());
     }
 
     /**

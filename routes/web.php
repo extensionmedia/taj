@@ -22,6 +22,7 @@ Route::get('user', [UserController::class, 'index'])->name('user.index');
 
 Route::get('produit/edit/{produit}', [ProduitController::class, 'edit'])->name('produit.edit');
 Route::get('produit/create', [ProduitController::class, 'create'])->name('produit.create');
+Route::post('produit/store', [ProduitController::class, 'store'])->name('produit.store');
 
 
 Route::get('produit/search', [ProduitController::class, 'search'])->name('produit.search');
