@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ProduitCategoryController;
 use App\Http\Controllers\ProduitColorController;
 use App\Http\Controllers\ProduitController;
@@ -70,3 +71,7 @@ Route::get('produit_type/exists/{produit_type}', [ProduitTypeController ::class,
 Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
 Route::get('settings/render/{page}', [SettingsController::class, 'render'])->name('settings.render');
 Route::post('project/store', [ProjectController::class, 'store'])->name('project.store');
+
+Route::post('file/upload', [FileUploadController::class, 'upload'])->name('file.upload');
+Route::post('file/read', [FileUploadController::class, 'getFiles'])->name('file.read');
+Route::post('file/destroy', [FileUploadController::class, 'destroy'])->name('file.destroy');

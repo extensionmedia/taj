@@ -1,4 +1,5 @@
 require('./bootstrap');
 var moment = require('moment');
 
-console.log(moment().format());
+import Swal from 'sweetalert2'
+window.Swal = Swal;

@@ -45,15 +45,21 @@
 
                     <div class="flex gap-4 my-4">
                         <div class="w-32 text-right text-xs text-gray-600 pt-2">
-                            Code à barre
+                            Barcode
                         </div>
-                        <div class="sm:flex gap-2">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 md:w-48" type="text" name="barcode" id="">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 md:w-48" type="text" name="barcode_2" id="">
+                        <div class="xl:flex gap-2">
+                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode" id="">
                         </div>
                     </div>
-
-                    <div class="flex gap-4 my-4 w-full">
+                    <div class="flex gap-4 my-4">
+                        <div class="w-32 text-right text-xs text-gray-600 pt-2">
+                            Barcode 2
+                        </div>
+                        <div class="xl:flex gap-2">
+                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode_2" id="">
+                        </div>
+                    </div>
+                    <div class="flex gap-4 my-4">
                         <div class="w-32 text-right text-xs text-gray-600 pt-2">
                             Désignation
                         </div>
@@ -62,7 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-4 my-4 w-full">
+                    <div class="flex gap-4 my-4">
                         <div class="w-32 text-right text-xs text-gray-600 pt-2">
                             Taille
                         </div>
@@ -186,6 +192,8 @@
 
             </form>
         </div>
+
+        @include('tools.upload', ['folder'=>'test'])
 
     </div>
 
