@@ -1,34 +1,21 @@
-@section('includes')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-    <script src="{{ asset('js/magnific-popup-min.js') }}" defer></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-@endsection
 
 
-<div class="w-full lg:w-4/6 mx-auto bg-white my-5 rounded border shadow-sm">
-    <div class="flex items-center justify-between bg-gray-50">
-        Upload Image
-        <div class="flex items-center gap-6">
-            <div class="new_image btn p-2 mr-2 text-green-400 cursor-pointer hover:text-green-600">
-                <i class="fas fa-cloud-upload-alt"></i> Upload
+
+    <div class="flex items-center gap-4 my-4 mt-8">
+        <div class="w-32 text-right text-xs text-gray-600"></div>
+        <div class="">
+            <div class="images rounded-lg h-40 w-40 overflow-hidden border-2 hover:border-blue-700 cursor-pointer">
+                <img class="bg-cover h-40 w-40" src="{{asset('img/upload_image.jpg')}}" alt="">
             </div>
-            <div class="collaps btn p-2 mr-2 text-green-400 cursor-pointer hover:text-green-600">
-                <i class="fas fa-chevron-down"></i>
+            <div class="reload hidden">reload</div>
+            <input name="file" id="poster" type="file" class="hidden">
+            <div class="new_image btn p-2 mr-2 text-gray-400 cursor-pointer hover:text-green-600">
+                <i class="fas fa-cloud-upload-alt"></i> changer
             </div>
         </div>
-        <div class="reload hidden">reload</div>
-        <input name="file" id="poster" type="file" class="hidden">
+
     </div>
 
-    <hr>
-
-    <div class="bg-gray-300">
-        <div class="w-auto relative flex images overflow-x-auto px-2"></div>
-    </div>
-
-
-</div>
 
 <script>
 $(document).ready(function(){
@@ -54,8 +41,7 @@ $(document).ready(function(){
                     },
                     method: 'POST',
                     success: function(response){
-                        console.log(response);
-                        that.parent().remove();
+                        $('.reload').trigger('click');
                     }
                 });
 
@@ -104,6 +90,8 @@ $(document).ready(function(){
             },
             method: 'POST',
             success: function(response){
+                var empty = `<img class="bg-cover h-32 w-32" src="{{asset('img/upload_image.jpg')}}" alt="">`;
+
                 for (let i = 0; i < response.length; i++) {
                     var image = `
                     <div class="relative">
@@ -121,6 +109,7 @@ $(document).ready(function(){
                     }
                 }
                 if(response.length==0){
+                    $('.images').html(empty);
                     $('.loader').remove();
                 }
             }

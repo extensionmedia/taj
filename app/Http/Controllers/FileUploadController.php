@@ -14,7 +14,7 @@ class FileUploadController extends Controller
             ]);
             $fileName = time().'.'.request()->file->getClientOriginalExtension();
 
-            request()->file->move('storage/'.$request->folder, $fileName);
+            request()->file->move('storage/'.$request->folder.'/temporary', $fileName);
             return response()->json(['response'=>"success"]);
         } catch (\Throwable $th) {
            return response()->json(['response'=>"error"]);

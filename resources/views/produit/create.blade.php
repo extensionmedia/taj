@@ -1,9 +1,5 @@
 @extends('container.app')
 
-@section('includes')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-@endsection
-
 @section('content')
     <div class="flex gap-2 items-center text-gray-50 tracking-tighter py-4 mt-2 mb-6 border-b border-gray-600 text-gray-200">
         <a href="{{route('dashboard')}}" class="py-2 w-16 text-center rounded-full bg-green-600 bg-opacity-30 hover:bg-opacity-40 cursor-pointer">
@@ -122,12 +118,8 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 my-4 mt-8">
-                        <div class="w-32 text-right text-xs text-gray-600"></div>
-                        <div class="rounded-lg h-32 w-32 overflow-hidden border-2 hover:border-blue-700 cursor-pointer">
-                            <img class="bg-cover h-32 w-32" src="{{asset('img/upload_image.jpg')}}" alt="">
-                        </div>
-                    </div>
+                    @include('tools.upload', ['folder'=>'produits/' . $UID])
+
 
                     <div class="flex items-center gap-4 my-4 mt-8">
                         <div class="w-32 text-right text-xs text-gray-600"></div>
@@ -193,7 +185,6 @@
             </form>
         </div>
 
-        @include('tools.upload', ['folder'=>'test'])
 
     </div>
 

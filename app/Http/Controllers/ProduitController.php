@@ -10,6 +10,7 @@ use App\Models\ProduitMarque;
 use App\Models\ProduitStatus;
 use App\Models\ProduitType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProduitController extends Controller
 {
@@ -104,7 +105,8 @@ class ProduitController extends Controller
             'marques'               =>      ProduitMarque::orderBy('produit_marque')->get(),
             'statuses'              =>      ProduitStatus::all(),
             'types'                 =>      ProduitType::all(),
-            'colors'                =>      ProduitColor::all()
+            'colors'                =>      ProduitColor::all(),
+            'UID'                   =>      Str::uuid()
         ]);
 
     }
