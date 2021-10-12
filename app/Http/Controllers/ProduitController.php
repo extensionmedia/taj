@@ -125,7 +125,35 @@ class ProduitController extends Controller
             'libelle'               => 'required|max:255',
             'produit_category_id'   => 'required|max:255',
         ]);
-        dd($request->all());
+
+        Produit::create([
+            'produit_marque_id'             =>      $request->produit_marque_id,
+            'produit_color_id'              =>      $request->produit_color_id,
+            'produit_category_id'           =>      $request->produit_category_id,
+            'produit_sous_category_id'      =>      0,
+            'produit_status_id'             =>      $request->produit_status_id,
+            'produit_type_id'               =>      $request->produit_type_id,
+            'created_by'                    =>      0,
+            'barcode'                       =>      $request->barcode,
+            'barcode_2'                     =>      $request->barcode_2,
+            'UID'                           =>      $request->UID,
+            'notes'                         =>      '',
+            'date_reception'                =>      $request->date_reception,
+            'taille'                        =>      $request->taille,
+            'code'                          =>      $request->code,
+            'libelle'                       =>      $request->libelle,
+            'prix_achat'                    =>      $request->prix_achat,
+            'prix_vente'                    =>      $request->prix_vente,
+            'prix_location'                 =>      $request->prix_location,
+            'qte'                           =>      $request->qte,
+            'fournisseur_id'                =>      0
+        ]);
+        return redirect()->route('produit.list');
+        return [
+            'status'    =>  'success',
+            'message'   =>  'Produit has been created'
+        ];
+
     }
 
     /**
@@ -147,7 +175,15 @@ class ProduitController extends Controller
      */
     public function edit(Produit $produit)
     {
-        dd($produit);
+        return view('produit.update')->with([
+            'categories'            =>      ProduitCategory::orderBy('produit_category')->get(),
+            'magasins'              =>      Magasin::all(),
+            'marques'               =>      ProduitMarque::orderBy('produit_marque')->get(),
+            'statuses'              =>      ProduitStatus::all(),
+            'types'                 =>      ProduitType::all(),
+            'colors'                =>      ProduitColor::all(),
+            'produit'=>$produit
+        ]);
     }
 
     /**

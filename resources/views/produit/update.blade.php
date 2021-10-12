@@ -7,28 +7,28 @@
         </a>
         <i class="fas fa-tshirt"></i>
         <div class="text-lg">
-            إضافة منتوج جديد
+            تغيير و تخصيص منتوج
         </div>
     </div>
 
     <div class="bg-white border-2 py-4 px-4 rounded mb-4 shadow">
         <div class="py-6 text-center font-bold text-2xl border-b bg-gray-50 -mx-4 -mt-4">
-            إضافة منتوج جديد
+            تغيير و تخصيص منتوج
             <div class="text-xs text-gray-400 text-center">
-                {{$UID}}
+                {{$produit->UID}}
             </div>
         </div>
         <div class="w-full xl:mx-auto 2xl:w-5/6 py-8">
-            <form id="form" method="POST" action="{{route('produit.store')}}" class="w-full flex gap-4">
+            <form id="form" method="POST" action="{{route('produit.update', $produit)}}" class="w-full flex gap-4">
                 <div class="w-2/3 py-2 border-r pr-4">
                     @csrf
-
+                    @method('PUT')
                     <div class="flex gap-4 my-4 w-full">
                         <div class="w-32 text-right text-xs text-gray-600 pt-2">
                             Date
                         </div>
                         <div class="">
-                            <input value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" class="border-gray-400 border-2 rounded px-2 py-1" type="date" name="date_reception" id="" required>
+                            <input value="{{$produit->date_reception}}" class="border-gray-400 border-2 rounded px-2 py-1" type="date" name="date_reception" id="" required>
                         </div>
                     </div>
 
@@ -37,8 +37,7 @@
                             Code
                         </div>
                         <div class="">
-                            <input value="{{$UID}}" type="hidden" name="UID">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 @error('code') bg-red-100 @enderror" type="text" name="code" id="">
+                            <input value="{{$produit->code}}" class="is_exists border-gray-400 border-2 rounded px-2 py-1 @error('code') bg-red-100 @enderror" type="text" name="code" id="">
                             <div class="text-red-500 text-xs">Code Daroooori</div>
                         </div>
                     </div>
@@ -48,7 +47,7 @@
                             Barcode
                         </div>
                         <div class="xl:flex gap-2">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode" id="">
+                            <input value="{{$produit->barcode}}" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode" id="">
                         </div>
                     </div>
                     <div class="flex gap-4 my-4">
@@ -56,7 +55,7 @@
                             Barcode 2
                         </div>
                         <div class="xl:flex gap-2">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode_2" id="">
+                            <input value="{{$produit->barcode_2}}" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode_2" id="">
                         </div>
                     </div>
                     <div class="flex gap-4 my-4">
@@ -64,7 +63,7 @@
                             Désignation
                         </div>
                         <div class="flex-1">
-                            <input value="" class="border-gray-400 border-2 rounded px-2 py-1 w-full" type="text" name="libelle" id="" required>
+                            <input value="{{$produit->libelle}}" class="border-gray-400 border-2 rounded px-2 py-1 w-full" type="text" name="libelle" id="" required>
                         </div>
                     </div>
 
@@ -73,7 +72,7 @@
                             Taille
                         </div>
                         <div class="">
-                            <input value="" class="border-gray-400 border-2 rounded px-2 py-1" type="text" name="taille" id="">
+                            <input value="{{$produit->taille}}" class="border-gray-400 border-2 rounded px-2 py-1" type="text" name="taille" id="">
                         </div>
                     </div>
 
@@ -82,7 +81,7 @@
                             Quantité
                         </div>
                         <div class="">
-                            <input value="1" class="border-gray-400 border-2 rounded px-2 py-1" type="number" name="qte" id="" required>
+                            <input value="{{$produit->qte}}" class="border-gray-400 border-2 rounded px-2 py-1" type="number" name="qte" id="" required>
                         </div>
                     </div>
 
@@ -91,7 +90,7 @@
                             Prix Achat
                         </div>
                         <div class="">
-                            <input value="0" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_achat" id="" required>
+                            <input value="{{$produit->prix_achat}}" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_achat" id="" required>
                         </div>
                     </div>
 
@@ -109,7 +108,7 @@
                             Prix Vente
                         </div>
                         <div class="">
-                            <input value="0" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_vente" id="" required>
+                            <input value="{{$produit->prix_vente}}" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_vente" id="" required>
                         </div>
                     </div>
 
@@ -118,11 +117,11 @@
                             Prix Location
                         </div>
                         <div class="">
-                            <input value="0" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_location" id="" required>
+                            <input value="{{$produit->prix_location}}" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_location" id="" required>
                         </div>
                     </div>
 
-                    @include('tools.upload', ['folder'=>'produits/' . $UID])
+                    @include('tools.upload', ['folder'=>'produits/' . $produit->UID])
 
 
                     <div class="flex items-center gap-4 my-4 mt-8">
