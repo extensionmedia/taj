@@ -7,6 +7,7 @@ use App\Models\Produit;
 use App\Models\ProduitCategory;
 use App\Models\ProduitColor;
 use App\Models\ProduitMarque;
+use App\Models\ProduitOfMagasin;
 use App\Models\ProduitStatus;
 use App\Models\ProduitType;
 use Illuminate\Http\Request;
@@ -119,14 +120,16 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'date_reception'        => 'required|date',
             'code'                  => 'required|max:255',
             'libelle'               => 'required|max:255',
             'produit_category_id'   => 'required|max:255',
+            'magasin'               =>  'required'
         ]);
 
-        Produit::create([
+        $produit = Produit::create([
             'produit_marque_id'             =>      $request->produit_marque_id,
             'produit_color_id'              =>      $request->produit_color_id,
             'produit_category_id'           =>      $request->produit_category_id,
@@ -148,6 +151,16 @@ class ProduitController extends Controller
             'qte'                           =>      $request->qte,
             'fournisseur_id'                =>      0
         ]);
+        if($request->has('magasin')){
+            foreach($request->magasin as $m){
+                ProduitOfMagasin::create([
+                    'magasin_id'    =>  $m,
+                    'produit_id'    =>  $produit->id
+                ]);
+            }
+        }
+
+
         return redirect()->route('produit.list');
         return [
             'status'    =>  'success',

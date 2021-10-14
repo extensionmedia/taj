@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex gap-2 items-center text-gray-50 tracking-tighter py-4 mt-2 mb-6 border-b border-gray-600 text-gray-200">
-        <a href="{{route('dashboard')}}" class="py-2 w-16 text-center rounded-full bg-green-600 bg-opacity-30 hover:bg-opacity-40 cursor-pointer">
+        <a href="{{route('produit.list')}}" class="py-2 w-16 text-center rounded-full bg-green-600 bg-opacity-30 hover:bg-opacity-40 cursor-pointer">
             <i class="fas fa-arrow-left"></i>
         </a>
         <i class="fas fa-tshirt"></i>
@@ -38,7 +38,9 @@
                         </div>
                         <div class="">
                             <input value="{{$produit->code}}" class="is_exists border-gray-400 border-2 rounded px-2 py-1 @error('code') bg-red-100 @enderror" type="text" name="code" id="">
-                            <div class="text-red-500 text-xs">Code Daroooori</div>
+                            @error('code')
+                                <div class="text-red-500 text-xs">Code Daroooori</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -139,7 +141,11 @@
                         <label class="text-xs text-gray-600" for="status">Status</label>
                         <select class="border-gray-400 border-2 rounded w-full px-2 py-1 bg-green-100" name="produit_status_id">
                             @foreach ($statuses as $s)
-                                <option @if($s->is_default) selected  @endif value="{{$s->id}}">{{$s->produit_status}}</option>
+                                @if ($produit->produit_status_id == $s->id)
+                                    <option selected value="{{$s->id}}">{{$s->produit_status}}</option>
+                                @else
+                                    <option value="{{$s->id}}">{{$s->produit_status}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -149,7 +155,11 @@
                         <select class="border-gray-400 border-2 rounded w-full px-2 py-1" name="produit_category_id">
                             <option value="-1"> -- catégorie</option>
                             @foreach ($categories as $c)
-                                <option value="{{$c->id}}">{{$c->produit_category}}</option>
+                                @if ($produit->produit_category_id == $c->id)
+                                    <option selected value="{{$c->id}}">{{$c->produit_category}}</option>
+                                @else
+                                    <option value="{{$c->id}}">{{$c->produit_category}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -159,7 +169,11 @@
                         <select class="border-gray-400 border-2 rounded w-full px-2 py-1" name="produit_marque_id">
                             <option value="-1"> -- marque</option>
                             @foreach ($marques as $m)
-                                <option value="{{$m->id}}">{{Str::upper($m->produit_marque)}}</option>
+                                @if ($produit->produit_marque_id == $c->id)
+                                    <option selected value="{{$m->id}}">{{Str::upper($m->produit_marque)}}</option>
+                                @else
+                                    <option value="{{$m->id}}">{{Str::upper($m->produit_marque)}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -169,7 +183,11 @@
                         <select class="border-gray-400 border-2 rounded w-full px-2 py-1" name="produit_color_id">
                             <option value="-1"> -- couleur</option>
                             @foreach ($colors as $c)
-                                <option value="{{$c->id}}">{{Str::upper($c->produit_color)}}</option>
+                                @if ($produit->produit_color_id == $c->id)
+                                    <option selected value="{{$c->id}}">{{Str::upper($c->produit_color)}}</option>
+                                @else
+                                    <option value="{{$c->id}}">{{Str::upper($c->produit_color)}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -178,10 +196,42 @@
                         <label class="text-xs text-gray-600" for="produit_type_id">Type</label>
                         <select class="border-gray-400 border-2 rounded w-full px-2 py-1" name="produit_type_id">
                             @foreach ($types as $t)
-                                <option @if($t->is_default) selected  @endif value="{{$t->id}}">{{Str::upper($t->produit_type)}}</option>
+                                @if ($produit->produit_type_id == $c->id)
+                                <option selected value="{{$t->id}}">{{Str::upper($t->produit_type)}}</option>
+                                @else
+                                    <option value="{{$t->id}}">{{Str::upper($t->produit_type)}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="text-green-500 font-bold text-xl pt-4 pb-2">
+                        Magasins
+                    </div>
+                    @error('magasin')
+                        <div class="text-red-500 text-xs">Magasin Daroooori</div>
+                    @enderror
+                    @foreach ($magasins as $m)
+                        @php
+                            $checked = '';
+                        @endphp
+                        <div class="flex items-center gap-4 my-4">
+                            <label class="flex items-center space-x-3">
+                                @if($produit->magasins())
+                                    @foreach ($produit->magasins as $magasin)
+                                        @if ($magasin->magasin_id == $m->id)
+                                            @php
+                                                $checked = 'checked';
+                                            @endphp
+                                        @endif
+                                    @endforeach
+                                @endif
+                                <input {{$checked}} type="checkbox" name="magasin[]" value="{{$m->id}}" class="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-blue-600 checked:border-transparent focus:outline-none">
+
+                                <span class="text-gray-900 font-medium text-xs">{{$m->magasin_name}}</span>
+                            </label>
+                        </div>
+                    @endforeach
 
                 </div>
 

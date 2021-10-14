@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="flex gap-2 items-center text-gray-50 tracking-tighter py-4 mt-2 mb-6 border-b border-gray-600 text-gray-200">
-        <a href="{{route('dashboard')}}" class="py-2 w-16 text-center rounded-full bg-green-600 bg-opacity-30 hover:bg-opacity-40 cursor-pointer">
+        <a href="{{route('produit.list')}}" class="py-2 w-16 text-center rounded-full bg-green-600 bg-opacity-30 hover:bg-opacity-40 cursor-pointer">
             <i class="fas fa-arrow-left"></i>
         </a>
         <i class="fas fa-tshirt"></i>
@@ -15,7 +15,7 @@
         <div class="py-6 text-center font-bold text-2xl border-b bg-gray-50 -mx-4 -mt-4">
             إضافة منتوج جديد
             <div class="text-xs text-gray-400 text-center">
-                {{$UID}}
+                @if( old('UID') ) {{old('UID')}} @else {{$UID}} @endif
             </div>
         </div>
         <div class="w-full xl:mx-auto 2xl:w-5/6 py-8">
@@ -37,9 +37,11 @@
                             Code
                         </div>
                         <div class="">
-                            <input value="{{$UID}}" type="hidden" name="UID">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 @error('code') bg-red-100 @enderror" type="text" name="code" id="">
-                            <div class="text-red-500 text-xs">Code Daroooori</div>
+                            <input value="@if( old('UID') ) {{old('UID')}} @else {{$UID}} @endif" type="hidden" name="UID">
+                            <input value="@if( old('code') ) {{old('code')}} @endif" class="is_exists border-gray-400 border-2 rounded px-2 py-1 @error('code') bg-red-100 @enderror" type="text" name="code" id="">
+                            @error('code')
+                                <div class="text-red-500 text-xs">Code Daroooori</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -48,7 +50,7 @@
                             Barcode
                         </div>
                         <div class="xl:flex gap-2">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode" id="">
+                            <input value="@if( old('barcode') ) {{old('barcode')}} @endif" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode" id="">
                         </div>
                     </div>
                     <div class="flex gap-4 my-4">
@@ -56,7 +58,7 @@
                             Barcode 2
                         </div>
                         <div class="xl:flex gap-2">
-                            <input value="" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode_2" id="">
+                            <input value="@if( old('barcode_2') ) {{old('barcode_2')}} @endif" class="is_exists border-gray-400 border-2 rounded px-2 py-1 xl:w-48" type="text" name="barcode_2" id="">
                         </div>
                     </div>
                     <div class="flex gap-4 my-4">
@@ -64,7 +66,7 @@
                             Désignation
                         </div>
                         <div class="flex-1">
-                            <input value="" class="border-gray-400 border-2 rounded px-2 py-1 w-full" type="text" name="libelle" id="" required>
+                            <input value="@if( old('libelle') ) {{old('libelle')}} @endif" class="border-gray-400 border-2 rounded px-2 py-1 w-full" type="text" name="libelle" id="" required>
                         </div>
                     </div>
 
@@ -73,7 +75,7 @@
                             Taille
                         </div>
                         <div class="">
-                            <input value="" class="border-gray-400 border-2 rounded px-2 py-1" type="text" name="taille" id="">
+                            <input value="@if( old('taille') ) {{old('taille')}} @endif" class="border-gray-400 border-2 rounded px-2 py-1" type="text" name="taille" id="">
                         </div>
                     </div>
 
@@ -82,7 +84,7 @@
                             Quantité
                         </div>
                         <div class="">
-                            <input value="1" class="border-gray-400 border-2 rounded px-2 py-1" type="number" name="qte" id="" required>
+                            <input value="@if( old('qte') ) {{old('qte')}} @else 1 @endif" class="border-gray-400 border-2 rounded px-2 py-1" type="number" name="qte" id="" required>
                         </div>
                     </div>
 
@@ -91,7 +93,7 @@
                             Prix Achat
                         </div>
                         <div class="">
-                            <input value="0" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_achat" id="" required>
+                            <input value="@if( old('prix_achat') ) {{old('prix_achat')}} @else 0 @endif" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_achat" id="">
                         </div>
                     </div>
 
@@ -109,7 +111,7 @@
                             Prix Vente
                         </div>
                         <div class="">
-                            <input value="0" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_vente" id="" required>
+                            <input value="@if( old('prix_vente') ) {{old('prix_vente')}} @else 0 @endif" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_vente" id="">
                         </div>
                     </div>
 
@@ -118,7 +120,7 @@
                             Prix Location
                         </div>
                         <div class="">
-                            <input value="0" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_location" id="" required>
+                            <input value="@if( old('prix_location') ) {{old('prix_location')}} @else 0 @endif" class="border-gray-400 border-2 rounded px-2 py-1 text-right font-bold" type="number" name="prix_location" id="">
                         </div>
                     </div>
 
@@ -183,6 +185,21 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="text-green-500 font-bold text-xl pt-4 pb-2">
+                        Magasins
+                    </div>
+                    @error('magasin')
+                        <div class="text-red-500 text-xs">Magasin Daroooori</div>
+                    @enderror
+                    @foreach ($magasins as $m)
+                        <div class="flex items-center gap-4 my-4">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="magasin[]" value="{{$m->id}}" class="form-tick appearance-none h-6 w-6 border border-gray-300 rounded-md checked:bg-blue-600 checked:border-transparent focus:outline-none">
+                                <span class="text-gray-900 font-medium text-xs">{{$m->magasin_name}}</span>
+                            </label>
+                        </div>
+                    @endforeach
 
                 </div>
 

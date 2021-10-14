@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class ProduitOfMagasin extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'produit_id',
+        'magasin_id'
+    ];
 
     public function produit(){
         return $this->belongsTo(Produit::class, 'produit_id', 'id');
