@@ -17,7 +17,7 @@
         </a>
     </div>
 
-    <div class="relative">
+    <div class="relative bg-white rounded-lg">
 
         Location....
 
