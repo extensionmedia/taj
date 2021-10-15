@@ -11,7 +11,17 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use MarkSitko\LaravelUnsplash\Unsplash;
 
+Route::get('test', function(){
+    $unsplash = new Unsplash;
+    $twoRandomPhotosOfSomePeoples = $unsplash->randomPhoto()
+    ->orientation('portrait')
+    ->term('tree')
+    ->count(1)
+    ->toJson();
+    return '<img src="'.$twoRandomPhotosOfSomePeoples[0]->urls->thumb.'">';
+});
 
 Route::get('/', function () {
     return view('dashboard.index');

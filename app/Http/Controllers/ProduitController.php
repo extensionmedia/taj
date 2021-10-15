@@ -12,6 +12,7 @@ use App\Models\ProduitStatus;
 use App\Models\ProduitType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use MarkSitko\LaravelUnsplash\Unsplash;
 
 class ProduitController extends Controller
 {
@@ -220,5 +221,15 @@ class ProduitController extends Controller
     public function destroy(Produit $produit)
     {
         //
+    }
+
+    public function test(){
+        $unsplash = new Unsplash;
+        $twoRandomPhotosOfSomePeoples = $unsplash->randomPhoto()
+        ->orientation('portrait')
+        ->term('people')
+        ->count(2)
+        ->toJson();
+        dd($twoRandomPhotosOfSomePeoples);
     }
 }
