@@ -222,14 +222,5 @@ class ProduitController extends Controller
     {
         //
     }
-
-    public function test(){
-        $unsplash = new Unsplash;
-        $twoRandomPhotosOfSomePeoples = $unsplash->randomPhoto()
-        ->orientation('portrait')
-        ->term('people')
-        ->count(2)
-        ->toJson();
-        dd($twoRandomPhotosOfSomePeoples);
-    }
+    
 }
