@@ -18,7 +18,6 @@ class CreateLocationsTable extends Migration
             $table->integer('user_id')->default(0);
             $table->integer('client_id')->default(0);
             $table->integer('location_status_id')->default(0);
-            $table->integer('location_type_id')->default(0);
             $table->integer('montant')->default(0);
             $table->date('date_debut');
             $table->date('date_fin');

@@ -16,6 +16,7 @@ class CreateLocationStatusesTable extends Migration
         Schema::create('location_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('location_status');
+            $table->string('color')->nullable();
             $table->boolean('is_default')->default(0);
         });
     }
