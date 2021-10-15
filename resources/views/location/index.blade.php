@@ -8,28 +8,20 @@
             </a>
             <i class="fas fa-tshirt"></i>
             <div class="text-lg">
-                المنتجات
+                Location
             </div>
         </div>
-        <a href="{{route('produit.create')}}" class="create bg-blue-400 py-2 px-3 text-white rounded border border-blue-500 text-sm hover:bg-blue-500">
+        <a href="{{route('location.create')}}" class="create bg-blue-400 py-2 px-3 text-white rounded border border-blue-500 text-sm hover:bg-blue-500">
             <i class="far fa-plus-square mr-1"></i>
             Ajouter
         </a>
     </div>
-<div class="relative">
-    @include('produit.partials.header')
 
-    @include('produit.partials.pagination')
+    <div class="relative">
 
-    @include('produit.table.table')
+        Location....
 
-    <div class="loading hidden absolute top-0 left-0 right-0 bottom-0 bg-gray-800 bg-opacity-20">
-        <div class="w-32 mx-auto mt-32 text-4xl text-center">
-            <i class="fas fa-spinner fa-spin"></i>
-            <div class="text-xl py-2">جاري التحميل</div>
-        </div>
     </div>
-</div>
 
 
 @endsection

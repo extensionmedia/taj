@@ -162,7 +162,7 @@ class ProduitController extends Controller
         }
 
 
-        return redirect()->route('produit.list');
+        return redirect()->route('produit.index');
         return [
             'status'    =>  'success',
             'message'   =>  'Produit has been created'

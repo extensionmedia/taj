@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProduitCategoryController;
 use App\Http\Controllers\ProduitColorController;
 use App\Http\Controllers\ProduitController;
@@ -27,14 +28,15 @@ Route::get('/', function () {
     return view('dashboard.index');
 })->name('dashboard');
 
-Route::get('produit', [ProduitController::class, 'index'])->name('produit.list');
+Route::resource('location', LocationController::class);
+Route::resource('produit', ProduitController::class);
 
 Route::get('user', [UserController::class, 'index'])->name('user.index');
 
-Route::get('produit/edit/{produit}', [ProduitController::class, 'edit'])->name('produit.edit');
-Route::get('produit/create', [ProduitController::class, 'create'])->name('produit.create');
-Route::post('produit/store', [ProduitController::class, 'store'])->name('produit.store');
-Route::post('produit/update/{produit}', [ProduitController::class, 'update'])->name('produit.update');
+// Route::get('produit/edit/{produit}', [ProduitController::class, 'edit'])->name('produit.edit');
+// Route::get('produit/create', [ProduitController::class, 'create'])->name('produit.create');
+// Route::post('produit/store', [ProduitController::class, 'store'])->name('produit.store');
+// Route::post('produit/update/{produit}', [ProduitController::class, 'update'])->name('produit.update');
 
 
 Route::get('produit/search', [ProduitController::class, 'search'])->name('produit.search');

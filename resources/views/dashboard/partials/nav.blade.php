@@ -5,7 +5,7 @@
             'icon'          =>  '<i class="far fa-calendar-alt"></i>',
             'style'         =>  'text-gray-50 font-bold text-center',
             'background'    =>  'bg-green-500',
-            'route'         =>  route("produit.list")
+            'route'         =>  route("location.index")
         ],
         [
             'label'         =>  'البيع',
@@ -40,7 +40,7 @@
             'icon'          =>  '<i class="fas fa-tshirt"></i>',
             'style'         =>  'text-gray-50 font-bold text-center',
             'background'    =>  'bg-blue-500',
-            'route'         =>  route("produit.list")
+            'route'         =>  route("produit.index")
         ],
         [
             'label'         =>  'التقارير',
