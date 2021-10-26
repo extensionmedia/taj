@@ -32,6 +32,7 @@ Route::resource('location', LocationController::class);
 Route::resource('produit', ProduitController::class);
 
 Route::get('user', [UserController::class, 'index'])->name('user.index');
+Route::get('user/create', [UserController::class, 'create'])->name('user.create');
 
 // Route::get('produit/edit/{produit}', [ProduitController::class, 'edit'])->name('produit.edit');
 // Route::get('produit/create', [ProduitController::class, 'create'])->name('produit.create');
